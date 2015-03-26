@@ -169,6 +169,13 @@ if ask_user "Do you wish to install commonly used applications now?"; then
     echo 'Installing Firefox...'
     brew cask install firefox
   fi
+
+  # Install iTerm2
+  echo "$BOTH_LISTS" | egrep -i "iterm2" &> /dev/null
+  if command_failed; then
+    echo 'Installing iTerm2...'
+    brew cask install iterm2
+  fi
 fi
 
 echo 'All done! You may have to open a new Terminal window if you chose to'
