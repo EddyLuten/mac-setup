@@ -1,5 +1,4 @@
 #!/bin/bash
-BASH_PROFILE_URL="https://raw.githubusercontent.com/EddyLuten/bash_profile/master/.bash_profile"
 
 command_failed()
 {
@@ -93,6 +92,12 @@ if command_failed; then
   fi
 fi
 
+# Install a .vimrc
+if [ ! -f ~/.vimrc ]; then
+  git clone https://github.com/amix/vimrc.git ~/.vim_runtime
+  source ~/.vim_runtime/install_awesome_vimrc.sh
+fi
+
 # Install node.js
 node --version &> /dev/null
 if command_failed; then
@@ -109,10 +114,8 @@ fi
 
 # Ensure that a .bash_profile exists
 if ask_user "Do you wish to install a default .bash_profile?"; then
-  echo 'Downloading a default .bash_profile...'
-  wget -q -O ~/.bash_profile "$BASH_PROFILE_URL"
-  chmod +x ~/.bash_profile
-  source ~/.bash_profile
+  git clone git@github.com:EddyLuten/bash_profile.git ~/bash_profile
+  ln -s ~/bash_profile/.bash_profile ~/.bash_profile
 else
   echo 'Using the existing .bash_profile or creating an empty one...'
   touch -a ~/.bash_profile
@@ -176,7 +179,16 @@ if ask_user "Do you wish to install commonly used applications now?"; then
     echo 'Installing iTerm2...'
     brew cask install iterm2
   fi
+
+  # Install Java
+  echo "$BOTH_LISTS" | egrep -i "java" &> /dev/null
+  if command_failed; then
+    echo 'Installing Java...'
+    brew cask install java
+  fi
 fi
+
+source ~/.bash_profile
 
 echo 'All done! You may have to open a new Terminal window if you chose to'
 echo 'install a default .bash_profile and wish for the changes to take effect.'

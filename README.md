@@ -18,7 +18,7 @@ This script sets a couple of sane Finder defaults and installs the latest stable
 * Homebrew
 * Homebrew Cask
 * wget
-* Vim
+* Vim + [The Ultimate vimrc](https://github.com/amix/vimrc)
 * Git
 * Node.js
 * rbenv
@@ -28,3 +28,4 @@ This script sets a couple of sane Finder defaults and installs the latest stable
     * Atom
     * Google Chrome
     * Mozilla Firefox
+    * Java (JRE)
