@@ -179,14 +179,10 @@ if ask_user "Do you wish to install commonly used applications now?"; then
     echo 'Installing iTerm2...'
     brew cask install iterm2
   fi
-
-  # Install Java
-  echo "$BOTH_LISTS" | egrep -i "java" &> /dev/null
-  if command_failed; then
-    echo 'Installing Java...'
-    brew cask install java
-  fi
 fi
+
+echo 'Installing Java...'
+brew cask install java
 
 source ~/.bash_profile
 
