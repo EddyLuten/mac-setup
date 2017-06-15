@@ -114,7 +114,7 @@ fi
 
 # Ensure that a .bash_profile exists
 if ask_user "Do you wish to install a default .bash_profile?"; then
-  git clone git@github.com:EddyLuten/bash_profile.git ~/bash_profile
+  git clone https://github.com/EddyLuten/bash_profile.git ~/bash_profile
   ln -s ~/bash_profile/.bash_profile ~/.bash_profile
 else
   echo 'Using the existing .bash_profile or creating an empty one...'
